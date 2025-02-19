@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Кастомный скроллбар для темной и светлой тем */
+
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #a0aec0; /* Цвет для светлой темы */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #718096; /* Цвет при наведении для светлой темы */
+}
+
+/* Темная тема */
+.dark ::-webkit-scrollbar-thumb {
+  background: #4a5568; /* Цвет для темной темы */
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #2d3748; /* Цвет при наведении для темной темы */
+}
+
+/* Плавный переход для всех элементов при смене темы */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+/* Анимация для иконки темы */
+.theme-toggle-icon {
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle-icon:hover {
+  transform: rotate(180deg);
+}
+
+/* Добавьте после существующих стилей */
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out;
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 2s ease-in-out infinite;
+}
+
+::selection {
+  background-color: rgba(99, 102, 241, 0.3);
+  color: inherit;
+}
+
+.search-highlight {
+  background-color: rgba(99, 102, 241, 0.2);
+}
+
+.search-highlight-current {
+  background-color: rgba(99, 102, 241, 0.4);
+}
